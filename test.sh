@@ -5,6 +5,9 @@ source tests/common.sh
 
 trap cleanup_resources EXIT
 
+# Start minishift/minikube
+/bin/bash tests/start_mini.sh
+
 wait_clean
 operator_requirements
 update_operator_image
