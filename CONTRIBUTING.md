@@ -63,19 +63,9 @@ Review the Ansible [role documentation](https://docs.ansible.com/ansible/latest/
 Tasks in the `roles/<role_name>/tasks/main.yml` playbook will be executed when the particular role is triggered in the operator from the Custom Resource (CR).
 
 ### Including new roles in the operator
-A new role should be included in the [playbook](playbook.yml) with
-condition(s) that will [trigger](#Workload-triggers) the role as follows:
+Generally speaking no modification needs to be done to the [playbook](playbook.yml) as the workload arguments provided/supported in the CR
+are automatically absorbed into the workload_args ansbible variable.
 
-Example `playbook.yml`:
-```yaml
-- hosts: localhost
-  gather_facts: no
-  tasks:
-  <existing_role_definitions>
-  - include_role:
-      name: "my-new-role"
-    when: my-new-role.condition
-```
 
 ### Workload triggers
 [CRD](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/) holds the definition of the resource.
